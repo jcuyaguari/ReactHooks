@@ -1,0 +1,217 @@
+* {
+    margin: 0px;
+}
+
+nav{
+    height: 100px;
+    background-color: rgb(226, 168, 43);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbar-logo{
+    width: 160px;
+}
+
+.searchbar-container{
+    display: flex;
+    margin: 0px auto;
+    padding: 0 20px;
+    align-items: center;
+    flex: 1;
+    align-items: stretch;
+}
+
+.searchbar{
+    background: white;
+    padding-right: 20px;
+    flex: 1;
+}
+
+.searchbar input {
+    padding: 10px;
+    box-shadow: 0px 2px 2px rgba(0,0,0,0.25);
+    border-radius: 3px;
+    border:none;
+    width: 100%;  /*  ancho de la barra */
+}
+
+.searchbar input:focus{
+    outline: none;
+}
+.searchbar-btn button{
+    background-color: #363636;
+    border: none;
+    border-radius: 10px;
+    height: 100%;
+    color: white;
+    padding: 10px 12px;
+    margin-left: 20px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.resultado-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);/*Tarjetas*/
+    grid-gap: 10px;
+    padding: 0px 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .resultado-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .resultado-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+.card{
+    display: flex;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.25);
+    border-radius: 3px;
+}
+
+.car-img-container{
+    padding: 0px 5px;
+
+}
+
+.card-img{
+    width: 70px;
+    height: 70px;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 10px 10px 10px;
+    flex: 1;
+}
+
+.card-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-top h3{
+    text-transform: capitalize;
+}
+
+.card-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-type{
+    display: flex;
+
+}
+
+.favorito{
+    text-decoration-line: underline;
+    
+}
+
+.boton-favorito{
+    border-color: rgb(150, 148, 24);
+}
+
+.card-type-text{
+    margin-right: 10px;
+    text-transform: capitalize;
+}
+
+.paginacion{
+    display: flex; /*Coloca de lado los botones*/
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn-paginacion{
+    background-color: black;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin: 0px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+/*Mensaje sin exisencias*/
+* {
+    margin: 0;
+    padding: 0;
+  }
+  .div-sinrespuesta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 24px;
+  }
+  
+  p {
+    font-weight: 700;
+    text-align: center;
+    font-size: 40px;
+    font-family: Hack, sans-serif;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #000, #fff, #000);
+    letter-spacing: 5px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: shine 15s linear infinite;
+    position: relative;
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position-x: -500%;
+    }
+    100% {
+      background-position-x: 500%;
+    }
+  }
+
+
+  footer {
+    font-family: inherit;
+    background-color: #717c10;
+    padding: 10px;
+    color: rgb(51, 46, 46);
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  footer a {
+    color: #bba215;
+  }
