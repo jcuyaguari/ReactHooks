@@ -7,6 +7,7 @@ import Resultado from './components/Resultado';
 import { getPokemonData, getPokemons, searchPokemon } from './api';
 import { FavoriteProvider } from "./contexts/favoriteContext";
 import Footer from "./components/Footer";
+import LoginForm from "./components/LoginForm";
 
 const localStoragekey = "favorite_pokemon";
 
@@ -18,7 +19,32 @@ export default function App(){
   const [favoritos,setFavorites] = useState([]);
   const [notFound,setNotFound]= useState(false);
   const [searching,setSearching]= useState(false);
-/* 
+
+  const adminUser = {email:"juan@mail.com",password:"point"}
+  const [user,setUser] = useState({name:"",email:""});
+  const [error,setError]=useState("");
+
+  const Login = details=>{
+    console.log(details);
+
+    if(details.email == adminUser.email && details.password == adminUser.password){
+      console.log("Ingreso..!")
+      setUser({
+        name:details.name,
+        email:details.email
+      })
+    }else{
+      console.log("Credenciales erróneas..!")
+      setError("Credenciales erróneas..!");
+    }
+      
+  }
+
+  const Logout = ()=>{
+    console.log("Logout");
+    setUser({name:"",email:""});
+  } 
+  /* 
       this.state = { 
         data: [],
         pokemons:[],
@@ -110,6 +136,15 @@ export default function App(){
   }
 
   return <React.Fragment>
+      {(user.email != "")?(
+        <div className="welcome">
+          <h2>Bienvenido, <span>{user.name}</span> </h2>
+          <button onClick={Logout}>SALIR</button>
+        </div>
+      ):(
+        <LoginForm Login={Login} error={error}/>
+      )}
+
       <FavoriteProvider 
       value={{
         favoritePokemons:favoritos,
