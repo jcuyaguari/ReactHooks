@@ -285,12 +285,16 @@ nav{
   }
 
   .welcome{
-    width: 100%;
-    max-width: 480px;
-    background-color: seashell;
-    padding: 15px 30px;
+    position: absolute;
+    top: 0px;
+    right: 15px;
   }
 
+  @media (max-width: 767px) {
+    .welcome {
+      right: 75px;
+    }
+  }
   .welcome h2{
     color: rgb(196, 176, 176);
     font-size: 28px;

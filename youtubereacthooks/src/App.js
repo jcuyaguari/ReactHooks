@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 import {Component , useState,useEffect } from 'react';
 import Navbar from './components/Navbar';
@@ -135,39 +136,48 @@ export default function App(){
     setSearching(false);
   }
 
-  return <React.Fragment>
-      {(user.email != "")?(
-        <div className="welcome">
-          <h2>Bienvenido, <span>{user.name}</span> </h2>
-          <button onClick={Logout}>SALIR</button>
-        </div>
-      ):(
-        <LoginForm Login={Login} error={error}/>
-      )}
+  return <BrowserRouter>
+      <React.Fragment>
+          <Switch>
+              <Route exact path="/"  component={LoginForm}>
+                  {(user.email != "")?(
+                    <div className="welcome">
+                      <h2>Bienvenido, <span>{user.name}</span> <button onClick={Logout}>SALIR</button></h2>
+                      <div>
+                        <Link to="/FavoriteProvider">
+                        POKEMONES
+                        </Link>
+                      </div>
+                      
+                    </div>
+                  ):(
+                    <LoginForm Login={Login} error={error}/>
+                  )}
+              </Route>
 
-      <FavoriteProvider 
-      value={{
-        favoritePokemons:favoritos,
-        updateFavoritePokemons:updateFavoritePokemons
-        }}>
-       <div>
-         {/* <Funcion></Funcion> */}
-         {/* <Form></Form> */}
-         <Navbar/>
-         <div className="App">
-         <Searchbar onSearch={onSearch}/>
-         {/*  {loading ? ( <div>Cargando Pokemones..🚀</div>):( //Si loading es TRUE hace esto this.setState({loading:false}); */}
-        {notFound? (
-          <div> 
-          <p>NO EXISTE COINCIDENCIAS🚀!! <br/><a href="https://github.com/jcuyaguari">github.com/jcuyaguari</a></p>
-          </div>
-        ):(
-          <Resultado loading={loading} pokemons={pokemons} pagina={pagina} setPage={setPagina} total={total}/>
-        )}
-        {/*  )} */}
-         </div>
-         <Footer/>
-       </div>
-      </FavoriteProvider>
-     </React.Fragment>
+              <Route path="/FavoriteProvider">
+                  <FavoriteProvider value={{ favoritePokemons:favoritos, updateFavoritePokemons:updateFavoritePokemons }}>
+                      <div>
+                        {/* <Funcion></Funcion> */}
+                        {/* <Form></Form> */}
+                        <Navbar/>
+                        <div className="App">
+                        <Searchbar onSearch={onSearch}/>
+                        {/*  {loading ? ( <div>Cargando Pokemones..🚀</div>):( //Si loading es TRUE hace esto this.setState({loading:false}); */}
+                        {notFound? (
+                          <div> 
+                          <p>NO EXISTE COINCIDENCIAS🚀!! <br/><a href="https://github.com/jcuyaguari">github.com/jcuyaguari</a></p>
+                          </div>
+                        ):(
+                          <Resultado loading={loading} pokemons={pokemons} pagina={pagina} setPage={setPagina} total={total}/>
+                        )}
+                        {/*  )} */}
+                        </div>
+                        <Footer/>
+                      </div>
+                  </FavoriteProvider>
+              </Route>
+          </Switch>
+      </React.Fragment>
+    </BrowserRouter>
 }
